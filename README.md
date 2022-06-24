@@ -36,3 +36,6 @@
 　メイン機能実装：6/28 - 7/28
 　β版をRUNTEQ内リリース（MVP）：7/28〆切
 　本番リリース：8/11〆切
+
+●画面偏移図リンク
+ https://www.figma.com/file/nSrM67jnJfzBVVVOIMZC8P/haya_map?node-id=0%3A1
