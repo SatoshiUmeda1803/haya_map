@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'routes/new'
+  get 'routes/create'
+  get 'maps/new'
   root to: 'top_pages#top'
 
   get 'login', to: 'user_sessions#new'
@@ -6,4 +9,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   resources :users, only: %i[new create]
+  resources :maps, only: %i[new]
+  resources :routes, only: %i[new]
 end
