@@ -19,7 +19,7 @@
                 dataType: 'text script',
                 cache: true,
                 headers: {
-                    'x-rapidapi-key': ENV["NAVITIME_KEY"]
+                    'x-rapidapi-key': '<%=ENV["NAVITIME_KEY"]%>'
                 },
                 success: function(response) {
                     console.log("success");
