@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <h1>何時に出発したらいい？</h1>
+    <%= form_with url: new_route_path, method: :get, local: true do |f| %>
+      <div class="form-group">
+       <%= f.datetime_field :goal_time, class: 'form-control' %>
+      </div>
+      <%= f.submit '検索', class: 'btn btn-primary' %>
+    <% end %>
+    <p><%= @start_time %>に出発してください</p>
+    </div>
+  </div>
+</div>

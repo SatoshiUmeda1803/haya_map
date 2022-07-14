@@ -1,0 +1,51 @@
+<p>経路案内</p>
+
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+   <title>mapsample</title>
+   <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+</head>
+<script>
+</script>
+<body>
+   <div id="map" style="height: 600px; width: 100%;"></div>
+   <script>
+        function getMapScript() {
+            var defer = $.Deferred();
+            $.ajax({
+                type: 'GET',
+                url: 'https://navitime-maps.p.rapidapi.com/map_script?host=localhost',
+                dataType: 'text script',
+                cache: true,
+                headers: {
+                    'x-rapidapi-key': ENV["NAVITIME_KEY"]
+                },
+                success: function(response) {
+                    console.log("success");
+                    defer.resolve();
+                },
+                error: function(response) {
+                    console.log("error");
+                    defer.reject();
+                }
+            });
+            return defer.promise();
+        }
+
+        // Must be done after getMapScript() is completed.
+        function init() {
+            console.log("init");
+            var displayMap = getMapScript();
+            displayMap.done(function() {
+                console.log("display map");
+                var map = new navitime.geo.Map('map', new navitime.geo.LatLng('35.681298', '139.766247'), 15, {
+                    // Fit to the map display area
+                    bounds: new navitime.geo.BoundsInfo(0, $('#map').width(), 0, $('#map').height())
+                });
+            });
+        }
+        window.onload = init
+   </script>
+</body>
+</html>
