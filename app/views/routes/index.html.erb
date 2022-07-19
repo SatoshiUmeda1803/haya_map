@@ -40,7 +40,7 @@
          var displayMap = getMapScript();
          displayMap.done(function() {
              console.log("display map");
-             var map = new navitime.geo.Map('map', new navitime.geo.LatLng('35.507582', '139.592213'), 15, {
+             var map = new navitime.geo.Map('map', new navitime.geo.LatLng(<%= @start_lat_lon %>), 15, {
                  // Fit to the map display area
                  bounds: new navitime.geo.BoundsInfo(0, $('#map').width(), 0, $('#map').height())
              });

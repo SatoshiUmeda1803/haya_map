@@ -23,9 +23,9 @@ class RoutesController < ApplicationController
     hash = JSON.parse(response.body)
     start_info = hash["items"][0]["coord"]
     start_hash = start_info.values_at('lat','lon')
-    start_lat_lon = start_hash.join(',')
-    start_params = URI.encode_www_form({start: start_lat_lon})
-
+    @start_lat_lon = start_hash.join(',')
+    start_params = URI.encode_www_form({start: @start_lat_lon})
+    
     # 到着地の住所を緯度経度で取得
     goal_point = params[:goal_point]
     goal_encoded = URI.encode_www_form({word: goal_point})
@@ -39,8 +39,8 @@ class RoutesController < ApplicationController
     hash = JSON.parse(response.body)
     goal_info = hash["items"][0]["coord"]
     goal_hash = goal_info.values_at('lat','lon')
-    goal_lat_lon = goal_hash.join(',')
-    goal_params = URI.encode_www_form({goal: goal_lat_lon})
+    @goal_lat_lon = goal_hash.join(',')
+    goal_params = URI.encode_www_form({goal: @goal_lat_lon})
     # 希望到着時刻を受け取って、出発時刻を計算
     goal_time = params[:goal_time]
     goal_time_params = URI.encode_www_form({goal_time: goal_time})
