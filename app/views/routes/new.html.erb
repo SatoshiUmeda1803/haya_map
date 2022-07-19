@@ -2,13 +2,21 @@
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
     <h1>何時に出発したらいい？</h1>
-    <%= form_with url: new_route_path, method: :get, local: true do |f| %>
+    <%= form_with url: routes_path, method: :get, local: true do |f| %>
       <div class="form-group">
-       <%= f.datetime_field :goal_time, class: 'form-control' %>
+        <%= f.label :start_point %>
+        <%= f.text_field :start_point, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :goal_point %>
+        <%= f.text_field :goal_point, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :goal_time %>
+        <%= f.datetime_field :goal_time, class: 'form-control' %>
       </div>
       <%= f.submit '検索', class: 'btn btn-primary' %>
     <% end %>
-    <p><%= @start_time %>に出発してください</p>
     </div>
   </div>
 </div>
