@@ -54,6 +54,9 @@ class RoutesController < ApplicationController
     hash = JSON.parse(response.body)
     start_time = hash["items"][0]["summary"]["move"]["from_time"]
     @start_time = Time.parse(start_time).strftime('%-m/%d %H:%M')
+    #ルートの情報を取得
+    @route_info = hash["items"][0]["sections"]
+    
     #ルートの形状を取得
     url = URI("https://navitime-route-totalnavi.p.rapidapi.com/shape_transit?#{start_params}&#{goal_params}&#{goal_time_params}&options=transport_shape&format=geojson&term=1440&limit=5&datum=wgs84&coord_unit=degree")
 
