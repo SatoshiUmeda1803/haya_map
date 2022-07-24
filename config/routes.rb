@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'routes/new'
-  get 'routes/create'
-  get 'maps/new'
-  root to: 'top_pages#top'
+  root to: 'routes#new'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
