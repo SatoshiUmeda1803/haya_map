@@ -12,10 +12,13 @@
         <div class="col-lg-3">
             <h1>出発時刻</h1>
             <h3><%= @start_time %></h3>
-            <h3>ルート案内</h3>
+            <h1>ルート案内</h1>
             <% @route_info.each do |r| %>
-                <div class="row">
-                <% if r["type"] == "point" %>
+                <% if r["name"] == "start" %>
+                    <h4>出発地</h4>
+                <% elsif r["name"] == "goal" %>
+                    <h4>目的地</h4>
+                <% elsif r["type"] == "point" %>
                     <% if r["node_types"] == ["station"] %>
                         <h4><%= r["name"] %>駅</h4>
                     <% else %>
@@ -24,13 +27,12 @@
                 <% end %>
                 <% if r["type"] == "move" %>
                     <% if r["transport"] %>
-                        <p>↓<%= r["line_name"] %><%= Time.parse(r["from_time"]).strftime('%H:%M') %>発 </p>
-                        <p>↓<%= r["transport"]["links"][0]["destination"]["name"] %>行き(<%= r["time"] %>分)</p>
+                        <p>↓<%= Time.parse(r["from_time"]).strftime('%H:%M') %>発 (<%= r["time"] %>分)</p>
+                        <p>↓<%= r["line_name"] %>(<%= r["transport"]["links"][0]["destination"]["name"] %>行き)</p>
                     <% else %>
                         <p>↓<%= r["line_name"] %>(<%= r["time"] %>分)</p>
                     <% end %>
                 <% end %>
-                </div>
             <% end %>
         </div>
         <div class="col-lg-9">
