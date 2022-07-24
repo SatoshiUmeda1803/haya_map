@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar navbar-expand-lg navigation navbar-dark bg-info fixed-top">
+    <%= link_to root_path, class: 'navbar-brand' do%>
+      <i class="far fa-map fa-lg"></i>はやまっぷ
+    <% end %>
+    
+    
+    <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto main-nav align-items-center">
+        <%= link_to "新規登録", new_user_path, class: 'nav-link active' %>
+        <%= link_to "ログイン", login_path, class: 'nav-link active' %>
+      </ul>
+    </div>
+  </nav>
+</header>
