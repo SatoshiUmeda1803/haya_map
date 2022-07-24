@@ -1,0 +1,22 @@
+<header>
+  <nav class="navbar navbar-expand-lg navigation navbar-dark bg-info fixed-top">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <i class="far fa-map fa-lg"></i>はやまっぷ
+    <% end %>
+    
+    
+    <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto main-nav align-items-center">
+        <%= link_to 'ルート検索', root_path, class: 'nav-link active' %>
+        <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link active' %>
+        <%= link_to "#", class: 'nav-link' do %>
+          <i class="far fa-user"></i><%= current_user.name %>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

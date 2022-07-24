@@ -1,5 +1,3 @@
-<p>経路案内</p>
-
 <html>
 <head>
    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
@@ -9,8 +7,39 @@
 <script>
 </script>
 <body>
-<p><%= @start_time %>に出発してください</p>
-<div id="map" style="height: 600px; width: 100%;"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h1>出発時刻</h1>
+            <h3><%= @start_time %></h3>
+            <h1>ルート案内</h1>
+            <% @route_info.each do |r| %>
+                <% if r["name"] == "start" %>
+                    <h4>出発地</h4>
+                <% elsif r["name"] == "goal" %>
+                    <h4>目的地</h4>
+                <% elsif r["type"] == "point" %>
+                    <% if r["node_types"] == ["station"] %>
+                        <h4><%= r["name"] %>駅</h4>
+                    <% else %>
+                        <h4><%= r["name"] %></h4>
+                    <% end %>
+                <% end %>
+                <% if r["type"] == "move" %>
+                    <% if r["transport"] %>
+                        <p>↓<%= Time.parse(r["from_time"]).strftime('%H:%M') %>発 (<%= r["time"] %>分)</p>
+                        <p>↓<%= r["line_name"] %>(<%= r["transport"]["links"][0]["destination"]["name"] %>行き)</p>
+                    <% else %>
+                        <p>↓<%= r["line_name"] %>(<%= r["time"] %>分)</p>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="col-lg-9">
+            <div id="map" style="height: 600px; width: 100%;"></div>
+        </div>
+    </div>
+</div>
 <script>
      function getMapScript() {
          var defer = $.Deferred();

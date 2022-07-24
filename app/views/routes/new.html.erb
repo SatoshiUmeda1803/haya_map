@@ -1,22 +1,31 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-    <h1>何時に出発したらいい？</h1>
-    <%= form_with url: routes_path, method: :get, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :start_point %>
-        <%= f.text_field :start_point, class: 'form-control' %>
+  <div class='top-wrapper'>
+    <div class='top-inner-text'>
+      <p>はやまっぷ</p>
+    </div>
+    <div class='top-sub-text'>
+      <p>ー早めに着く地図ー</p>
+    </div>
+  
+
+    <div class="row route-form">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= form_with url: routes_path, method: :get, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :出発地 %>
+          <%= f.text_field :start_point, class: 'form-control', placeholder: '出発地の住所を正確に入力してください' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :目的地 %>
+          <%= f.text_field :goal_point, class: 'form-control', placeholder: '目的地の住所を正確に入力してください' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :希望到着時刻 %>
+          <%= f.datetime_field :goal_time, class: 'form-control' %>
+        </div>
+        <%= f.submit '検索', class: 'btn btn-primary' %>
+      <% end %>
       </div>
-      <div class="form-group">
-        <%= f.label :goal_point %>
-        <%= f.text_field :goal_point, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :goal_time %>
-        <%= f.datetime_field :goal_time, class: 'form-control' %>
-      </div>
-      <%= f.submit '検索', class: 'btn btn-primary' %>
-    <% end %>
     </div>
   </div>
 </div>
