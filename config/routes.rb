@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  resources :users, only: %i[new create]
-  resources :routes, only: %i[new index]
-  resources :time_settings, only: %i[edit update]
+  resource :user, only: %i[new create]
+  resource :time_setting, only: %i[edit update]
+  resource :route, only: %i[new show]
 end
