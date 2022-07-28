@@ -13,15 +13,15 @@
       <%= form_with url: routes_path, method: :get, local: true do |f| %>
         <div class="form-group">
           <%= f.label :出発地 %>
-          <%= f.text_field :start_point, class: 'form-control', placeholder: '出発地の住所を正確に入力してください' %>
+          <%= f.text_field :start_point, value: params[:start_point], class: 'form-control', placeholder: '出発地の住所を正確に入力してください' %>
         </div>
         <div class="form-group">
           <%= f.label :目的地 %>
-          <%= f.text_field :goal_point, class: 'form-control', placeholder: '目的地の住所を正確に入力してください' %>
+          <%= f.text_field :goal_point, value: params[:goal_point], class: 'form-control', placeholder: '目的地の住所を正確に入力してください' %>
         </div>
         <div class="form-group">
           <%= f.label :希望到着時刻 %>
-          <%= f.datetime_field :goal_time, class: 'form-control' %>
+          <%= f.datetime_field :goal_time, value: params[:goal_time], class: 'form-control' %>
         </div>
         <%= f.submit '検索', class: 'btn btn-primary' %>
       <% end %>
