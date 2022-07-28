@@ -1,0 +1,14 @@
+<h1>TimeSettings#edit</h1>
+<div class="setting_edit">
+  <%= form_with model: @time_setting, local: true do |f| %>
+    <p class="col-sm-9">遅刻防止機能</p>
+    <div class="form-group col-sm-3">
+      <%= f.label :randomized, 'オン', value: true %>
+      <%= f.radio_button :randomized, 'true' %>
+    
+      <%= f.label :randomized, 'オフ', value: false %>
+      <%= f.radio_button :randomized, 'false' %>
+    </div>
+    <%= f.submit '保存する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
