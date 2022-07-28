@@ -1,14 +1,38 @@
-<h1>TimeSettings#edit</h1>
-<div class="setting_edit">
-  <%= form_with model: @time_setting, local: true do |f| %>
-    <p class="col-sm-9">遅刻防止機能</p>
-    <div class="form-group col-sm-3">
-      <%= f.label :randomized, 'オン', value: true %>
-      <%= f.radio_button :randomized, 'true' %>
-    
-      <%= f.label :randomized, 'オフ', value: false %>
-      <%= f.radio_button :randomized, 'false' %>
+<div class="container" style="padding-top: 3.5rem">
+  <div class="row">
+    <div class="col-lg-8">
+      <h4>遅刻防止機能</h4>
+      <p>ランダムに、早めの到着と希望到着時刻通りの到着を混ぜることで、慣れによる遅刻を防止します。</p>
     </div>
-    <%= f.submit '保存する', class: 'btn btn-primary' %>
-  <% end %>
+    <div class="col-lg-4">
+      <%= form_with model: @time_setting, local: true do |f| %>
+        <div class="form-group">
+          <%= f.radio_button :randomized, 'true' %>
+          <%= f.label :randomized, 'オン', value: true %>
+          <%= f.radio_button :randomized, 'false' %>
+          <%= f.label :randomized, 'オフ', value: false %>
+        </div>
+        <%= f.submit '保存する', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8">
+      <h4>到着時間カスタマイズ</h4>
+      <p>どれだけ早めに到着するかを設定できます。※デフォルトは「早め」</p>
+    </div>
+    <div class="col-lg-4">
+      <%= form_with model: @time_setting, local: true do |f| %>
+        <div class="form-group">
+          <%= f.radio_button :costom_time, '40' %>
+          <%= f.label :costom_time, 'とても早め', value: 40 %>
+          <%= f.radio_button :costom_time, '20' %>
+          <%= f.label :costom_time, '早め', value: 20 %>
+          <%= f.radio_button :costom_time, '10' %>
+          <%= f.label :costom_time, '少し早め', value: 10 %>
+        </div>
+        <%= f.submit '保存する', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
 </div>
