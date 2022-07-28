@@ -10,7 +10,7 @@
 
     <div class="row route-form">
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <%= form_with url: routes_path, method: :get, local: true do |f| %>
+      <%= form_with url: route_path, method: :get, local: true do |f| %>
         <div class="form-group">
           <%= f.label :出発地 %>
           <%= f.text_field :start_point, value: params[:start_point], class: 'form-control', placeholder: '出発地の住所を正確に入力してください' %>
