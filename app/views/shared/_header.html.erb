@@ -13,6 +13,7 @@
       <ul class="navbar-nav ml-auto main-nav align-items-center">
         <%= link_to 'ルート検索', root_path, class: 'nav-link active' %>
         <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link active' %>
+        <%= link_to 'ユーザー設定', '/time_setting/edit', class: 'nav-link active' %>
         <%= link_to "#", class: 'nav-link' do %>
           <i class="far fa-user"></i><%= current_user.name %>
         <% end %>
