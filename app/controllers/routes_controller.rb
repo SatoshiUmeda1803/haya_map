@@ -1,7 +1,7 @@
 class RoutesController < ApplicationController
   def new; end
 
-  def index
+  def show
     require 'uri'
     require 'net/http'
     require 'openssl'
@@ -70,16 +70,31 @@ class RoutesController < ApplicationController
     @goal_lat_lon = goal_hash.join(',')
     goal_params = URI.encode_www_form({goal: @goal_lat_lon})
 
-    # 希望到着時刻を受け取って、20分早い時間に変えて出発時刻を計算
+    # 希望到着時刻を受け取る
     goal_time = params[:goal_time]
     if goal_time == ""
       flash.now[:danger] = '到着時刻が設定されていません'
       render :new
       return
     end
-
-    fast_goal_time = Time.parse(goal_time).ago(20.minutes).strftime("%FT%R")
-    goal_time_params = URI.encode_www_form({goal_time: goal_time})
+    # ログイン状態か確認
+    if logged_in?
+      # 遅刻防止機能がオンになっているか確認して、オンならば10%の確率で入力された到着時刻通りでルート検索をする。
+      if current_user.time_setting.randomized == true
+        random = Random.rand(9)
+        if random == 1
+          fast_goal_time = Time.parse(goal_time).strftime("%FT%R")
+        else
+          fast_goal_time = Time.parse(goal_time).ago(current_user.time_setting.costom_time.minutes).strftime("%FT%R") 
+        end
+      else
+        fast_goal_time = Time.parse(goal_time).ago(current_user.time_setting.costom_time.minutes).strftime("%FT%R")
+      end
+    else
+      fast_goal_time = Time.parse(goal_time).ago(20.minutes).strftime("%FT%R")
+    end
+    byebug
+    goal_time_params = URI.encode_www_form({goal_time: fast_goal_time})
     url = URI("https://navitime-route-totalnavi.p.rapidapi.com/route_transit?#{start_params}&#{goal_params}&#{goal_time_params}&datum=wgs84&term=1440&limit=5&coord_unit=degree")
     request = Net::HTTP::Get.new(url)
     request["X-RapidAPI-Key"] = ENV["NAVITIME_KEY"]
