@@ -4,7 +4,10 @@
       <p>はやまっぷ</p>
     </div>
     <div class='top-sub-text'>
-      <p>ー早めに着く地図ー</p>
+      <p>目的地までのルートと乗り換え案内サービス</p>
+    </div>
+    <div class='rotate-title'>
+      <p>早めに着く</p>
     </div>
   
 
@@ -23,7 +26,7 @@
           <%= f.label :希望到着時刻 %>
           <%= f.datetime_field :goal_time, value: params[:goal_time], class: 'form-control' %>
         </div>
-        <%= f.submit '検索', class: 'btn btn-primary' %>
+        <%= f.submit 'ルート検索', class: 'btn btn-primary' %>
       <% end %>
       </div>
     </div>
