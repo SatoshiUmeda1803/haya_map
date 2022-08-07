@@ -26,7 +26,7 @@ class RoutesController < ApplicationController
 
     response = http.request(request)
     hash = JSON.parse(response.body)
-
+  
     #入力された住所から情報を取得できなかった場合
     if hash["count"]["total"] == 0
       flash.now[:danger] = '出発地の住所を正確に入力してください'
@@ -93,7 +93,7 @@ class RoutesController < ApplicationController
     else
       fast_goal_time = Time.parse(goal_time).ago(20.minutes).strftime("%FT%R")
     end
-    byebug
+    
     goal_time_params = URI.encode_www_form({goal_time: fast_goal_time})
     url = URI("https://navitime-route-totalnavi.p.rapidapi.com/route_transit?#{start_params}&#{goal_params}&#{goal_time_params}&datum=wgs84&term=1440&limit=5&coord_unit=degree")
     request = Net::HTTP::Get.new(url)
