@@ -7,7 +7,7 @@
 <script>
 </script>
 <body>
-<div class="container">
+<div class="container" style="padding-top: 4rem">
     <div class="row">
         <div class="col-lg-3">
             <h1>出発時刻</h1>
@@ -27,10 +27,10 @@
                 <% end %>
                 <% if r["type"] == "move" %>
                     <% if r["transport"] %>
-                        <p>↓<%= Time.parse(r["from_time"]).strftime('%H:%M') %>発 (<%= r["time"] %>分)</p>
-                        <p>↓<%= r["line_name"] %>(<%= r["transport"]["links"][0]["destination"]["name"] %>行き)</p>
+                        <p><%= image_tag 'arrow.png',size: '15x20' %><%= Time.parse(r["from_time"]).strftime('%H:%M') %>発 (<%= r["time"] %>分)<br>
+                        <%= image_tag 'arrow.png',size: '15x20' %><%= r["line_name"] %>(<%= r["transport"]["links"][0]["destination"]["name"] %>行き)</p>
                     <% else %>
-                        <p>↓<%= r["line_name"] %>(<%= r["time"] %>分)</p>
+                        <p><%= image_tag 'arrow.png',size: '15x20' %><%= r["line_name"] %>(<%= r["time"] %>分)</p>
                     <% end %>
                 <% end %>
             <% end %>

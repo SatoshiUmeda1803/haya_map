@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  randomized: 1
+  costom_time: 1
+  user: one
+
+two:
+  randomized: 1
+  costom_time: 1
+  user: two
