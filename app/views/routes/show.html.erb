@@ -10,14 +10,14 @@
 <div class="container" style="padding-top: 4rem">
     <div class="row">
         <div class="col-lg-3">
-            <h1>出発時刻</h1>
-            <h3><%= @start_time %></h3>
             <h1>ルート案内</h1>
+            <h3><%= @start_time %> - <%= @goal_time.strftime('%H:%M') %></h3>
+            
             <% @route_info.each do |r| %>
                 <% if r["name"] == "start" %>
-                    <h4>出発地</h4>
+                    <h4><%= @start_name %></h4>
                 <% elsif r["name"] == "goal" %>
-                    <h4>目的地</h4>
+                    <h4><%= @goal_name %></h4>
                 <% elsif r["type"] == "point" %>
                     <% if r["node_types"] == ["station"] %>
                         <h4><%= r["name"] %>駅</h4>
