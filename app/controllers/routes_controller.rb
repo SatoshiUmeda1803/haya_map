@@ -14,7 +14,7 @@ class RoutesController < ApplicationController
     end
 
     start_encoded = URI.encode_www_form({word: start_point})
-    url = URI("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{start_encoded}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=#{ENV["GOOGLE_KEY"]}")
+    url = URI("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{start_encoded}&inputtype=textquery&language=ja&region=ja&ipbias&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=#{ENV["GOOGLE_KEY"]}")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -24,7 +24,6 @@ class RoutesController < ApplicationController
     response = http.request(request)
     hash = JSON.parse(response.body)
  
-    
     #入力された住所から情報を取得できた場合
     start_info = hash["candidates"][0]["geometry"]["location"]
     start_hash = start_info.values_at('lat','lng')
@@ -41,7 +40,7 @@ class RoutesController < ApplicationController
     end
 
     goal_encoded = URI.encode_www_form({word: goal_point})
-    url = URI("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{goal_encoded}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=#{ENV["GOOGLE_KEY"]}")
+    url = URI("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=#{goal_encoded}&inputtype=textquery&language=ja&region=ja&ipbias&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=#{ENV["GOOGLE_KEY"]}")
 
     request = Net::HTTP::Get.new(url)
     response = http.request(request)
@@ -55,13 +54,14 @@ class RoutesController < ApplicationController
 
     # 希望到着時刻を受け取る
     goal_time = params[:goal_time]
-    @goal_time = Time.parse(goal_time)
     
     if goal_time == ""
       flash.now[:danger] = '到着時刻が設定されていません'
       render :new
       return
     end
+
+    @goal_time = Time.parse(goal_time)
     # ログイン状態か確認
     if logged_in?
       # 遅刻防止機能がオンになっているか確認して、オンならば10%の確率で入力された到着時刻通りでルート検索をする。
