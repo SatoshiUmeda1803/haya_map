@@ -92,12 +92,13 @@ class RoutesController < ApplicationController
       
     response = http.request(request)
     hash = JSON.parse(response.body)
-    if hash.empty? then
+    begin
+      start_time = hash["items"][0]["summary"]["move"]["from_time"]
+    rescue NoMethodError
       flash.now[:danger] = 'ルートが見つけられませんでした。住所や建物名を変えてみてください。'
       render :new
       return
     end
-    start_time = hash["items"][0]["summary"]["move"]["from_time"]
     @start_time = Time.parse(start_time).strftime('%H:%M')
     
     #ルートの情報を取得
