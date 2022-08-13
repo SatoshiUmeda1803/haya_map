@@ -1,4 +1,51 @@
 @import 'bootstrap';
 @import 'routes';
+@import 'inquiries';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+body{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+
+.wrapper {
+  background-image: image-url("top.jpg");
+  height: calc(100vh - 134px);
+  position: relative;
+  background-position: center;
+  background-size:cover;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer{
+  width: 100%;
+  background-color: #fff;
+  color: black;
+  text-align: center;
+  margin-top: auto;
+}
+
+ul.footer-menu li {
+  display: inline;
+}
+
+.link{
+  text-decoration: none;
+  color: black ; 
+}
+.link:hover {
+  color: rgb(126, 126, 126) ; 
+}
+.navbar-brand img {
+  object-fit: contain;
+  width: 200px;
+}
