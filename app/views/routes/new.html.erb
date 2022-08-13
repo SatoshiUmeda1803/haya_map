@@ -1,16 +1,8 @@
 <div class="container">
-  <div class='top-wrapper'>
+  <div class='wrapper'>
     <div class='top-inner-text'>
-      <p>はやまっぷ</p>
+      <%= image_tag 'hayamap.png', class: 'd-block mx-auto img-fluid'%>
     </div>
-    <div class='top-sub-text'>
-      <p>目的地までのルートと乗り換え案内サービス</p>
-    </div>
-    <div class='rotate-title'>
-      <p>早めに着く</p>
-    </div>
-  
-
     <div class="row route-form">
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
       <%= form_with url: route_path, method: :get, local: true do |f| %>
@@ -31,6 +23,9 @@
         </div>
       <% end %>
       </div>
+    </div>
+    <div class="new-user-text">
+      <p><%= link_to 'ユーザー登録', new_user_path %>で時間調整や遅刻防止機能が使える!</p>
     </div>
   </div>
 </div>
