@@ -95,7 +95,7 @@ class RoutesController < ApplicationController
     begin
       start_time = hash["items"][0]["summary"]["move"]["from_time"]
     rescue NoMethodError
-      flash.now[:danger] = 'ルートが見つけられませんでした。住所や建物名を変えてみてください。'
+      flash.now[:danger] = 'ルートが見つけられませんでした。住所や建物名を変えてみてください。もしくはサイトのアクセス数過多かもしれません。'
       render :new
       return
     end
