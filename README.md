@@ -1,6 +1,6 @@
 # はやまっぷ
 
-https://haya-map.herokuapp.com/
+https://haya-map.com/
 
 # サービス概要
 <img width="1512" alt="スクリーンショット 2022-08-13 18 17 00" src="https://user-images.githubusercontent.com/99541405/184477407-a9afc874-a226-4408-95f4-c7be95a5cc2d.png">
