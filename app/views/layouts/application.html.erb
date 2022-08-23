@@ -10,19 +10,11 @@
     
       gtag('config', 'G-SBBR6GSP6E');
     </script>
-    <head prefix="og:http://ogp.me/ns#">
-      <meta property="og:title" content="はやまっぷ">
-      <meta property="og:description" content="思ったよりも早めに到着する　ルート&乗り換え案内サービス">
-      <meta property="og:url" content="https://haya-map.com/">
-      <meta property="og:image" content="https://haya-map.com/app/assets/images/hayaogp.png">
-      <meta property="og:type" content="website">
-      <meta property="og:site_name" content="はやまっぷ">
-      <meta name="twitter:card" content="summary_large_image" />
-    </head>
+    <%= display_meta_tags(default_meta_tags) %>
     <title>はやまっぷ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag('favicon.ico') %>
+    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
