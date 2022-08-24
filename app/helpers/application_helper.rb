@@ -21,6 +21,10 @@ module ApplicationHelper
         image: image_url('hayaogp.png'),
         locale: 'ja_JP',
       },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@umejarashi',
+      }
 
     }
   end
