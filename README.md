@@ -20,5 +20,6 @@ https://haya-map.com/
 # 使用技術
 ・Ruby 2.7.6  
 ・Ruby on Rails 5.2.8  
+・PostgreSQL
 ・Google Maps Platform(Places API)  
 ・NAVITIME API(NAVITIME Maps/NAVITIME Route totalnavi)

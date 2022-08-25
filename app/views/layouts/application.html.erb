@@ -10,10 +10,11 @@
     
       gtag('config', 'G-SBBR6GSP6E');
     </script>
+    <%= display_meta_tags(default_meta_tags) %>
     <title>はやまっぷ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag('favicon.ico') %>
+    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
